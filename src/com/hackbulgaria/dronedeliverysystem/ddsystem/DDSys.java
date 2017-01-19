@@ -1,11 +1,8 @@
 package com.hackbulgaria.dronedeliverysystem.ddsystem;
 
 import java.util.ArrayList;
-
-import DroneDeliverySys.Drone;
-import DroneDeliverySys.DroneManager;
-import DroneDeliverySys.Request;
-import DroneDeliverySys.Warehouse;
+import com.hackbulgaria.dronedeliverysystem.drones.*;
+import com.hackbulgaria.dronedeliverysystem.warehouse.*;
 
 public class DDSys {
 	private ArrayList<Request> req;
@@ -13,5 +10,5 @@ public class DDSys {
 	private DroneManager droneManager;
 	private Warehouse warehouseManager;
 	
-	public boolean requestValidation
+	//public boolean requestValidation()
 }

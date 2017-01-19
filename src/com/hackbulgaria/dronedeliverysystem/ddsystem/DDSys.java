@@ -1,17 +1,20 @@
 package com.hackbulgaria.dronedeliverysystem.ddsystem;
 
 import java.util.ArrayList;
-
-import DroneDeliverySys.Drone;
-import DroneDeliverySys.DroneManager;
-import DroneDeliverySys.Request;
-import DroneDeliverySys.Warehouse;
+import java.util.Map;
+import com.hackbulgaria.dronedeliverysystem.drones.*;
+import com.hackbulgaria.dronedeliverysystem.warehouse.*;
 
 public class DDSys {
-	private ArrayList<Request> req;
-	private ArrayList<Drone> drones;
 	private DroneManager droneManager;
-	private Warehouse warehouseManager;
+	private Warehouse warehouse;
 	
-	public boolean requestValidation
+	public boolean validateProductRequest(Request request) {
+		for(Map.Entry<Integer, Integer> productQuery : request.getWantedProducts().entrySet()) {
+			if(!warehouse.checkProduct(productQuery.getKey(), productQuery.getValue())) {
+				return false;
+			}
+		}
+		return true;
+	}
 }

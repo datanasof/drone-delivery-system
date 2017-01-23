@@ -11,7 +11,7 @@ public class Drone implements DroneInterface{
 	private int dischargePerMile = 1;
 	private Timestamp time;
 	
-	public Drone(int id, int battery, int capacity, int chargingRate, Timestamp time){
+	public Drone(int id, int battery, float capacity, int chargingRate, Timestamp time){
 		this.id = id;
 		this.battery = battery;
 		this.batteryMaxCapacity = battery;

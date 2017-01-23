@@ -1,9 +1,10 @@
 package com.hackbulgaria.dronedeliverysystem.drones;
 
+import java.sql.SQLException;
 import java.sql.Timestamp;
 
 public interface DroneManagerInterface {
-	public boolean droneAvailable(float capacityWU, Timestamp time);
+	public boolean droneAvailable(double capacityWU, Timestamp time) throws SQLException;
 	/*
 	Constructor:
 	Timestamp(int year, int month, int date, int hour, int minute, int second, int nano)
@@ -17,6 +18,6 @@ public interface DroneManagerInterface {
 	second - 0 to 59
 	nano - 0 to 999,999,999
 	*/
-	public void droneSend(int miles);
+	public void droneSend(int miles) throws SQLException;
 	
 }

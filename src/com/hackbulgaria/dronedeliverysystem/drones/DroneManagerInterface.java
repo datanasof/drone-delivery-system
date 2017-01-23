@@ -19,5 +19,5 @@ public interface DroneManagerInterface {
 	nano - 0 to 999,999,999
 	*/
 	public void droneSend(int miles) throws SQLException;
-	
+	//int miles -> miles in one direction of the travel distance
 }

@@ -5,7 +5,7 @@ import java.sql.Timestamp;
 public class Drone implements DroneInterface{
 	private int id;
 	private int battery;
-	private int capacity;
+	private float capacity;
 	private int chargingRate;
 	private int batteryMaxCapacity;
 	private int dischargePerMile = 1;
@@ -50,13 +50,13 @@ public class Drone implements DroneInterface{
 	}
 	
 	@Override
-	public int getCapacity() {
+	public float getCapacity() {
 		// TODO Auto-generated method stub
 		return capacity;
 	}
 	
 	@Override
-	public void setCapacity(int capacity) {
+	public void setCapacity(float capacity) {
 		// TODO Auto-generated method stub
 		this.capacity = capacity;
 	}

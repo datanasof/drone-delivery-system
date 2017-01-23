@@ -1,23 +1,26 @@
 package com.hackbulgaria.dronedeliverysystem.drones;
 
-import java.sql.Timestamp;
+import java.sql.*;
 import java.util.ArrayList;
 import java.util.List;
 
-public class DroneManager implements DroneManagerInterface{
-	List<Drone> droneList = new ArrayList<Drone>();
+public class DroneManager2 implements DroneManagerInterface{
+	DBConnector connector;
+	Statement stmt = null;
+	List<Drone> dronesAvailable = new ArrayList<Drone>();
 	List<Drone> droneToSend = new ArrayList<Drone>();
 		
-	public DroneManager(int numberOfDrones){
-		@SuppressWarnings("deprecation")
-		Timestamp startingTime = new Timestamp(117, 0, 19, 19, 0, 0, 0);
-		populateList(numberOfDrones,startingTime);
+	public DroneManager2(){
+		this.connector = new DBConnector();
+		this.stmt = connector.createStatement();
 	}
 
 	@Override
 	public boolean droneAvailable(float capacityWU, Timestamp time) {
 		int droneCapacity = 0;
+		dronesAvailable.clear();
 		droneToSend.clear();
+		
 		for(Drone drone : droneList){
 			if(drone.getTimestamp().before(time) || drone.getTimestamp().equals(time)){
 				droneToSend.add(drone);
@@ -27,6 +30,12 @@ public class DroneManager implements DroneManagerInterface{
 			
 		}
 		return false;
+	}
+	
+	private List<Drone> getAvailableDrones(Timestamp time) throws SQLException{
+		String sql;
+		sql = "select * from Drones where available<?";
+		ResultSet rs = (ResultSet) connector.query(sql);
 	}
 
 	@Override
@@ -59,7 +68,7 @@ public class DroneManager implements DroneManagerInterface{
 	
 	/*public static void main(String[] args) {
 		Timestamp time = new Timestamp(117, 0, 19, 19, 0, 0, 0);
-		DroneManager manager = new DroneManager(10);
+		DroneManager2 manager = new DroneManager2(10);
 		System.out.println(manager.droneList.get(1).getTimestamp());
 		System.out.println(manager.droneAvailable(500, time));
 		manager.droneSend(15);
@@ -71,4 +80,5 @@ public class DroneManager implements DroneManagerInterface{
 
 
 }
+
 

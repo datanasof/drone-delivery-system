@@ -8,9 +8,9 @@ public interface DroneInterface {
 	
 	public void setID(int id);
 		
-	public int getCapacity();
+	public float getCapacity();
 	
-	public void setCapacity(int capacity);
+	public void setCapacity(float capacity);
 	
 	public int getBatteryLevel();
 	

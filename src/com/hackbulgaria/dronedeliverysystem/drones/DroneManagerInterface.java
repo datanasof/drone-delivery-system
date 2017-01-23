@@ -3,7 +3,7 @@ package com.hackbulgaria.dronedeliverysystem.drones;
 import java.sql.Timestamp;
 
 public interface DroneManagerInterface {
-	public boolean droneAvailable(int capacityWU, Timestamp time);
+	public boolean droneAvailable(float capacityWU, Timestamp time);
 	/*
 	Constructor:
 	Timestamp(int year, int month, int date, int hour, int minute, int second, int nano)

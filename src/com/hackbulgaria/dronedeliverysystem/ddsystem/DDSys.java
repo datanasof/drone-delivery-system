@@ -24,6 +24,7 @@ public class DDSys {
 	public boolean deliveryValidation(Request request){
 		double weight = 0;
 		Iterator it = request.getWantedProducts().entrySet().iterator();
+
 		
 		while(it.hasNext()){
 			Map.Entry<Integer, Integer> pair = (Map.Entry<Integer, Integer>)it.next();

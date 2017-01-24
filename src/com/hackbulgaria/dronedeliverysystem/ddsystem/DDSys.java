@@ -11,6 +11,7 @@ public class DDSys {
 	
 	private DroneManager droneManager;
 	private Warehouse warehouse;
+	public DDSys(){};
 	
 	public boolean validateProductRequest(Request request) {
 		for(Map.Entry<Integer, Integer> productQuery : request.getWantedProducts().entrySet()) {

@@ -20,4 +20,8 @@ public class Warehouse {
 		}
 		// TODO Throw exception
 	}
+	
+	public Product getProduct(int id){
+		return inventory.get(id);
+	}
 }

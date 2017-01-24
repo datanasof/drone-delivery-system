@@ -1,6 +1,6 @@
 package com.hackbulgaria.dronedeliverysystem.ddsystem;
-import java.util.Date;
 import java.util.HashMap;
+import java.sql.*;
 
 public class Request {
 	private class Coordinates {
@@ -16,10 +16,10 @@ public class Request {
 		}
 	}
 	private final HashMap<Integer, Integer> wantedProducts;
-	private final Date stamp;
+	private final Timestamp stamp;
 	private final Coordinates coords;
 	
-	public Request(HashMap<Integer, Integer> wantedProducts, Date requestStamp, Coordinates requestCoords){
+	public Request(HashMap<Integer, Integer> wantedProducts, Timestamp requestStamp, Coordinates requestCoords){
 		this.coords = requestCoords;
 		this.stamp = requestStamp;
 		this.wantedProducts = wantedProducts;
@@ -27,5 +27,8 @@ public class Request {
 	
 	public HashMap<Integer, Integer> getWantedProducts() {
 		return wantedProducts;
+	}
+	public Timestamp getTimeStamp(){
+		return this.stamp;
 	}
 }

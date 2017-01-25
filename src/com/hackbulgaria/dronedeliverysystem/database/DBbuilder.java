@@ -5,16 +5,12 @@ import java.io.FileReader;
 import java.sql.*;
 
 public class DBbuilder {
-	static final String DB_URL = "jdbc:mysql://localhost/ddsdb";
-	static final String USER = "root";
-	static final String PASS = "160983St";
-	static final String SQL = "resources/ddsdb.sql";
 	
 	public static void start(){
 		try{
 			PreparedStatement stmt = null;			
 			Class.forName("com.mysql.jdbc.Driver");
-			Connection conn = DriverManager.getConnection(DB_URL,USER,PASS);
+			Connection conn = DriverManager.getConnection(DBdata.DB_URL,DBdata.USER,DBdata.PASS);
 			BufferedReader br = getBR();
 			
 			String sql = br.readLine();
@@ -34,7 +30,7 @@ public class DBbuilder {
 	}
 	
 	private static BufferedReader getBR() throws FileNotFoundException{
-		BufferedReader br = new BufferedReader(new FileReader(SQL));
+		BufferedReader br = new BufferedReader(new FileReader(DBdata.SQL));
 		return br;
 	}
 }

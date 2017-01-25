@@ -1,10 +1,15 @@
 package com.hackbulgaria.dronedeliverysystem.ddsystem;
 import java.util.HashMap;
+
+import com.hackbulgaria.dronedeliverysystem.database.DBbuilder;
+
 import java.sql.*;
 
 public class Main {
 
 	public static void main(String[] args) {
+		DBbuilder.start(); //creates database
+		
 		HashMap<Integer, Integer> order = new HashMap<>();
 		Timestamp stamp = new Timestamp(117, 1, 19, 21, 20, 0, 0);
 		DDSys sys = new DDSys();

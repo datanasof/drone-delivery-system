@@ -4,9 +4,9 @@ import java.sql.*;
 import java.util.*;
 
 public class DroneManager implements DroneManagerInterface{
-	static final String DB_URL = "jdbc:mysql://localhost/dds";
+	static final String DB_URL = "jdbc:mysql://localhost/ddsdb";
 	static final String USER = "root";
-	static final String PASS = "****";
+	static final String PASS = "160983St";
 	
 	private List<Drone> droneToSend = new ArrayList<Drone>();
 		

@@ -15,7 +15,7 @@ public class DDSys {
 	
 	public boolean validateProductRequest(Request request) {
 		for(Map.Entry<Integer, Integer> productQuery : request.getWantedProducts().entrySet()) {
-			if(!warehouse.checkProduct(productQuery.getKey(), productQuery.getValue())) {
+			if(!Warehouse.productAvailable(productQuery.getKey(), productQuery.getValue())) {
 				return false;
 			}
 		}
@@ -29,9 +29,19 @@ public class DDSys {
 		
 		while(it.hasNext()){
 			Map.Entry<Integer, Integer> pair = (Map.Entry<Integer, Integer>)it.next();
-			weight += warehouse.getProduct(pair.getKey()).getWeight();
+			weight += Warehouse.productGetWeight(pair.getKey());
 		    it.remove();
 		}
 		return droneManager.droneAvailable(weight, request.getTimeStamp());
 	}
+	
+	public void executeOrder(Request request){
+		droneManager.droneSend(request.getCoordinates());
+		for(Map.Entry<Integer, Integer> productQuery : request.getWantedProducts().entrySet()) {
+			Warehouse.productSend(productQuery.getKey(), productQuery.getValue());
+			}
+	}
+		
+		
+	
 }

@@ -19,4 +19,8 @@ public class Request {
 	public Timestamp getTimeStamp(){
 		return this.stamp;
 	}
+	
+	public Coordinates getCoordinates(){
+		return this.coords;
+	}
 }

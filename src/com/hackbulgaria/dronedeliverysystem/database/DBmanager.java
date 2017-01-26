@@ -6,7 +6,9 @@ import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.Timestamp;
 import java.util.ArrayList;
+import java.util.HashMap;
 import java.util.List;
+import java.util.Map;
 
 import com.hackbulgaria.dronedeliverysystem.drones.Drone;
 import com.hackbulgaria.dronedeliverysystem.warehouse.Product;
@@ -143,6 +145,67 @@ public class DBmanager {
 			se.printStackTrace();
 		}
 		return quantity;
+	}
+
+	public static Map<Integer, Timestamp> getWhenAvailable(int id) {
+		int quantity = 0;
+		Timestamp time = null;
+		try{
+			PreparedStatement stmt = null;
+			ResultSet rs = null;			
+			Class.forName("com.mysql.jdbc.Driver");
+			Connection conn = DriverManager.getConnection(DBdata.DB_URL,DBdata.USER,DBdata.PASS);
+						
+			String sql;
+			sql = "SELECT * FROM WH_deliveries where id = ?";
+			stmt = conn.prepareStatement(sql);
+			stmt.setInt(1, id);
+			rs = stmt.executeQuery();
+			
+			while(rs.next()){		         
+				quantity  = rs.getInt("quantity");
+				time = rs.getTimestamp("available");
+			}   
+			
+			rs.close();
+	        stmt.close();
+	        conn.close();
+		} catch(Exception se) {
+			se.printStackTrace();
+		}
+		Map<Integer, Timestamp> availability = new HashMap<>();
+		if(quantity != 0){
+			availability.put(quantity, time);
+		}
+				
+		return availability;
+	}
+
+	public static double getProductWeight(int id) {
+		double weight = 0;
+		try{
+			PreparedStatement stmt = null;
+			ResultSet rs = null;			
+			Class.forName("com.mysql.jdbc.Driver");
+			Connection conn = DriverManager.getConnection(DBdata.DB_URL,DBdata.USER,DBdata.PASS);
+						
+			String sql;
+			sql = "SELECT * FROM Products where id = ?";
+			stmt = conn.prepareStatement(sql);
+			stmt.setInt(1, id);
+			rs = stmt.executeQuery();
+			
+			while(rs.next()){		         
+				weight  = rs.getInt("weight");
+			}   
+			
+			rs.close();
+	        stmt.close();
+	        conn.close();
+		} catch(Exception se) {
+			se.printStackTrace();
+		}
+		return weight;
 	}
 
 }

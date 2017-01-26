@@ -11,5 +11,5 @@ public class Coordinates {
 		public boolean isValid(){
 			return (this.x >= 0 && this.x < 1000) && (this.y >= 0 && this.y < 1000);
 		}
-	}
 }
+

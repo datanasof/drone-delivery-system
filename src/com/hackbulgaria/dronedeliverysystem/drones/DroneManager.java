@@ -8,7 +8,7 @@ import com.hackbulgaria.dronedeliverysystem.database.DBmanager;
 import com.hackbulgaria.dronedeliverysystem.ddsystem.Coordinates;
 import com.hackbulgaria.dronedeliverysystem.ddsystem.Request;
 
-public class DroneManager implements DroneManagerInterface{
+public class DroneManager {
 	private List<Drone> droneToSend = new ArrayList<Drone>();
 		
 	public DroneManager(){			
@@ -24,7 +24,7 @@ public class DroneManager implements DroneManagerInterface{
 		drone.setTimestamp(time);
 	}
 		
-	@Override
+	
 	public boolean droneAvailable(double capacityWU, Timestamp time){
 		droneToSend = DBmanager.droneListAvailable(capacityWU, time);		
 		if(droneToSend != null){			

@@ -6,7 +6,7 @@ import java.sql.*;
 public class DBcreator {
 	static final String DB_URL = "jdbc:mysql://localhost/dds";
 	static final String USER = "root";
-	static final String PASS = "160983St";
+	static final String PASS = "********";
 	
 	public static void start(){
 		try{

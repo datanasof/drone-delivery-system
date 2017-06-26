@@ -2,7 +2,7 @@ package com.hackbulgaria.dronedeliverysystem.drones;
 
 import java.sql.Timestamp;
 
-public class Drone implements DroneInterface{
+public class Drone{
 	private int id;
 	private int battery;
 	private float capacity;
@@ -23,51 +23,43 @@ public class Drone implements DroneInterface{
 	
 	public Drone(){
 			
-	}
+	}	
 	
-	@Override
 	public int getID() {
 		// TODO Auto-generated method stub
 		return id;
 	}
-
-	@Override
+	
 	public void setID(int id) {
 		// TODO Auto-generated method stub
 		this.id = id;
 	}
 
-	@Override
 	public int getChargingRate() {
 		// TODO Auto-generated method stub
 		return 0;
 	}
 
-	@Override
 	public void setChargingRate(int chargingRate) {
 		// TODO Auto-generated method stub
 		this.chargingRate = chargingRate;
 	}
 	
-	@Override
 	public float getCapacity() {
 		// TODO Auto-generated method stub
 		return capacity;
 	}
 	
-	@Override
 	public void setCapacity(float capacity) {
 		// TODO Auto-generated method stub
 		this.capacity = capacity;
 	}
 
-	@Override
 	public int getBatteryLevel() {
 		// TODO Auto-generated method stub
 		return battery;
 	}
 	
-	@Override
 	public void setBatteryLevel(int battery) {
 		// TODO Auto-generated method stub
 		this.battery = battery;
@@ -81,18 +73,15 @@ public class Drone implements DroneInterface{
 		this.time = time;
 	}
 
-	@Override
 	public int getChargingTime() {
 		float chargingTime = (float) (batteryMaxCapacity - battery) / chargingRate;
 		return (int)Math.ceil(chargingTime);
 	}
 	
-	@Override
 	public void charge() {
 		battery = batteryMaxCapacity;
 	}
 
-	@Override
 	public void travel(int miles) {
 		battery -= miles * 2 * dischargePerMile;		
 	}

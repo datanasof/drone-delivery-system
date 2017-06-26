@@ -11,7 +11,10 @@ public class DDSys {
 	
 	private DroneManager droneManager;
 	private Warehouse warehouse;
-	public DDSys(){};
+	public DDSys(){
+		droneManager = new DroneManager();
+		warehouse = new Warehouse();
+	};
 	
 	public boolean validateProductRequest(Request request) {
 		for(Map.Entry<Integer, Integer> productQuery : request.getWantedProducts().entrySet()) {
@@ -24,9 +27,7 @@ public class DDSys {
 
 	public boolean deliveryValidation(Request request){
 		double weight = 0;
-		Iterator it = request.getWantedProducts().entrySet().iterator();
-
-		
+		Iterator it = request.getWantedProducts().entrySet().iterator();	
 		while(it.hasNext()){
 			Map.Entry<Integer, Integer> pair = (Map.Entry<Integer, Integer>)it.next();
 			weight += Warehouse.productGetWeight(pair.getKey());
@@ -37,8 +38,10 @@ public class DDSys {
 	
 	public void executeOrder(Request request){
 		droneManager.droneSend(request.getCoordinates());
+		System.out.println(request.getWantedProducts());
 		for(Map.Entry<Integer, Integer> productQuery : request.getWantedProducts().entrySet()) {
-			Warehouse.productSend(productQuery.getKey(), productQuery.getValue());
+			System.out.println(1+ productQuery.getKey() + productQuery.getValue());
+			//Warehouse.productSend(productQuery.getKey(), productQuery.getValue());
 			}
 	}
 		
